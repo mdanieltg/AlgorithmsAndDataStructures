@@ -1,14 +1,14 @@
 namespace AlgorithmsAndDataStructures.Algorithms.Sorting;
 
-public class InsertionSort
+public static class InsertionSort
 {
     public static void Sort(int[] array)
     {
-        for (var i = 1; i < array.Length; i++)
+        for (int i = 1; i < array.Length; i++)
         {
-            var current = array[i];
+            int current = array[i];
 
-            var j = i - 1;
+            int j = i - 1;
             while (j >= 0 && current <= array[j])
             {
                 array[j + 1] = array[j--];
