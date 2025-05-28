@@ -4,7 +4,7 @@ public static class MergeSort
 {
     public static int[] Sort(int[] array)
     {
-        if (array.Length == 1) return array;
+        if (array.Length <= 1) return array;
 
         int middle = array.Length / 2;
 
@@ -20,7 +20,7 @@ public static class MergeSort
         return Merge(leftArray, rightArray);
     }
 
-    public static int[] Merge(int[] arrayA, int[] arrayB)
+    private static int[] Merge(int[] arrayA, int[] arrayB)
     {
         var mergedArray = new int[arrayA.Length + arrayB.Length];
         int index = 0,
