@@ -4,10 +4,10 @@ public static class LinearSearch
 {
     public static bool Search(int[] array, int target)
     {
-        int i = 0;
-        while (i < array.Length)
+        int index = 0;
+        while (index < array.Length)
         {
-            if (array[i++] == target)
+            if (array[index++] == target)
                 return true;
         }
 
