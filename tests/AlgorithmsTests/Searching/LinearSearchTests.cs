@@ -7,7 +7,7 @@ using Xunit;
 
 namespace AlgorithmsTests.Searching;
 
-public class SimpleSearchTests
+public class LinearSearchTests
 {
     private readonly int[] _array =
     [
@@ -28,7 +28,7 @@ public class SimpleSearchTests
         int itemToSearch = -100;
 
         // Act
-        bool result = SimpleSearch.Search(_array, itemToSearch);
+        bool result = LinearSearch.Search(_array, itemToSearch);
 
         // Assert
         Assert.True(result);
@@ -41,7 +41,7 @@ public class SimpleSearchTests
         var itemToSearch = 100;
 
         // Act
-        bool result = SimpleSearch.Search(_array, itemToSearch);
+        bool result = LinearSearch.Search(_array, itemToSearch);
 
         // Assert
         Assert.True(result);
@@ -54,7 +54,7 @@ public class SimpleSearchTests
         var itemToSearch = 0;
 
         // Act
-        bool result = SimpleSearch.Search(_array, itemToSearch);
+        bool result = LinearSearch.Search(_array, itemToSearch);
 
         // Assert
         Assert.True(result);
@@ -67,7 +67,7 @@ public class SimpleSearchTests
         int itemToSearch = -101;
 
         // Act
-        bool result = SimpleSearch.Search(_array, itemToSearch);
+        bool result = LinearSearch.Search(_array, itemToSearch);
 
         // Assert
         Assert.False(result);
@@ -80,7 +80,7 @@ public class SimpleSearchTests
         var itemToSearch = 101;
 
         // Act
-        bool result = SimpleSearch.Search(_array, itemToSearch);
+        bool result = LinearSearch.Search(_array, itemToSearch);
 
         // Assert
         Assert.False(result);
@@ -93,7 +93,7 @@ public class SimpleSearchTests
         var itemToSearch = 2;
         
         // Act
-        bool result = SimpleSearch.Search(_array, itemToSearch);
+        bool result = LinearSearch.Search(_array, itemToSearch);
         
         // Assert
         Assert.False(result);

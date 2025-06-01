@@ -1,6 +1,6 @@
 namespace AlgorithmsAndDataStructures.Algorithms.Searching;
 
-public static class SimpleSearch
+public static class LinearSearch
 {
     public static bool Search(int[] array, int target)
     {
