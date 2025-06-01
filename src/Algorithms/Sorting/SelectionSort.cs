@@ -2,22 +2,25 @@
 
 public static class SelectionSort
 {
-    public static void Sort(int[] arr)
+    public static void Sort(int[] array)
     {
-        for (int i = 0; i < arr.Length - 1; ++i) // One by one move boundary of unsorted subarray  
-        {
-            int small = i; //minimum element in unsorted array  
+        int length = array.Length;
 
-            for (int j = i + 1; j < arr.Length; ++j)
+        // Move one at a time the boundary of the unsorted subarray
+        for (int currentIndex = 0; currentIndex < length - 1; ++currentIndex)
+        {
+            // Smallest element so far
+            int minIndex = currentIndex;
+
+            for (int searchIndex = currentIndex + 1; searchIndex < length; ++searchIndex)
             {
-                if (arr[j] < arr[small])
-                    small = j;
+                if (array[searchIndex] < array[minIndex])
+                    // Assign the index of the smallest element
+                    minIndex = searchIndex;
             }
 
-            // Swap the minimum element with the first element  
-            int temp = arr[small];
-            arr[small] = arr[i];
-            arr[i] = temp;
+            // Swap the minimum element with the current element
+            (array[minIndex], array[currentIndex]) = (array[currentIndex], array[minIndex]);
         }
     }
 }

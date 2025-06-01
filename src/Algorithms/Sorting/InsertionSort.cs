@@ -4,17 +4,17 @@ public static class InsertionSort
 {
     public static void Sort(int[] array)
     {
-        for (int i = 1; i < array.Length; i++)
+        for (int index = 1; index < array.Length; index++)
         {
-            int current = array[i];
+            int elementToInsert = array[index];
 
-            int j = i - 1;
-            while (j >= 0 && current <= array[j])
+            int j = index - 1;
+            while (j >= 0 && elementToInsert <= array[j])
             {
                 array[j + 1] = array[j--];
             }
 
-            array[j + 1] = current;
+            array[j + 1] = elementToInsert;
         }
     }
 }
