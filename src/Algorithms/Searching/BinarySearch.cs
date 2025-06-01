@@ -6,15 +6,16 @@ public static class BinarySearch
 
     private static bool Search(int[] array, int target, int startIndex, int endIndex)
     {
-        int length = endIndex - startIndex + 1;
-        if (length == 1) return array[startIndex] == target;
+        if (startIndex > endIndex)
+            return false;
 
-        int middle = startIndex + length / 2;
+        int midIndex = startIndex + (endIndex - startIndex) / 2;
 
-        if (array[middle] == target) return true;
+        if (array[midIndex] == target)
+            return true;
 
-        return array[middle] > target
-            ? Search(array, target, startIndex, middle - 1)
-            : Search(array, target, middle + 1, endIndex);
+        return array[midIndex] > target
+            ? Search(array, target, startIndex, midIndex - 1)
+            : Search(array, target, midIndex + 1, endIndex);
     }
 }
