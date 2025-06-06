@@ -2,14 +2,36 @@
 
 namespace AlgorithmsAndDataStructures.DataStructures;
 
+/// <summary>
+/// Represents a doubly linked list data structure that implements the IEnumerable interface.
+/// </summary>
+/// <typeparam name="T">The type of elements in the list.</typeparam>
 public class DoublyLinkedList<T> : IEnumerable<T>
 {
+    /// <summary>
+    /// Reference to the first node in the list.
+    /// </summary>
     private Node<T>? _head;
+
+    /// <summary>
+    /// Reference to the last node in the list.
+    /// </summary>
     private Node<T>? _tail;
 
+    /// <summary>
+    /// Gets the number of elements in the list.
+    /// </summary>
     public int Size { get; private set; }
+
+    /// <summary>
+    /// Gets a value indicating whether the list is empty.
+    /// </summary>
     public bool IsEmpty => Size == 0;
 
+    /// <summary>
+    /// Returns an enumerator that iterates through the list.
+    /// </summary>
+    /// <returns>An enumerator for the list.</returns>
     public IEnumerator<T> GetEnumerator()
     {
         Node<T>? traverse = _head;
@@ -20,16 +42,28 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         }
     }
 
+    /// <summary>
+    /// Returns an enumerator that iterates through the list.
+    /// </summary>
+    /// <returns>An IEnumerator for the list.</returns>
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator();
     }
 
+    /// <summary>
+    /// Adds an item to the end of the list.
+    /// </summary>
+    /// <param name="item">The item to add to the list.</param>
     public void Add(T item)
     {
         AddLast(item);
     }
 
+    /// <summary>
+    /// Adds an item to the beginning of the list.
+    /// </summary>
+    /// <param name="item">The item to add to the list.</param>
     public void AddFirst(T item)
     {
         if (_head is null)
@@ -46,6 +80,10 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         ++Size;
     }
 
+    /// <summary>
+    /// Adds an item to the end of the list.
+    /// </summary>
+    /// <param name="item">The item to add to the list.</param>
     public void AddLast(T item)
     {
         if (_tail is null)
@@ -60,6 +98,9 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         ++Size;
     }
 
+    /// <summary>
+    /// Removes all items from the list.
+    /// </summary>
     public void Clear()
     {
         Node<T>? traverse = _head;
@@ -77,18 +118,33 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         Size = 0;
     }
 
+    /// <summary>
+    /// Returns the first element in the list without removing it.
+    /// </summary>
+    /// <returns>The first element in the list.</returns>
+    /// <exception cref="System.Exception">Thrown when the list is empty.</exception>
     public T PeekFirst()
     {
         if (IsEmpty) throw new Exception("The list is empty.");
         return _head!.Data;
     }
 
+    /// <summary>
+    /// Returns the last element in the list without removing it.
+    /// </summary>
+    /// <returns>The last element in the list.</returns>
+    /// <exception cref="System.Exception">Thrown when the list is empty.</exception>
     public T PeekLast()
     {
         if (IsEmpty) throw new Exception("The list is empty.");
         return _tail!.Data;
     }
 
+    /// <summary>
+    /// Removes and returns the first element in the list.
+    /// </summary>
+    /// <returns>The first element in the list.</returns>
+    /// <exception cref="System.Exception">Thrown when the list is empty.</exception>
     public T RemoveFirst()
     {
         if (_head is null) throw new Exception("The list is empty.");
@@ -110,6 +166,11 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         return data;
     }
 
+    /// <summary>
+    /// Removes and returns the last element in the list.
+    /// </summary>
+    /// <returns>The last element in the list.</returns>
+    /// <exception cref="System.Exception">Thrown when the list is empty.</exception>
     public T RemoveLast()
     {
         if (_tail is null) throw new Exception("The list is empty.");
@@ -135,6 +196,11 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         return data;
     }
 
+    /// <summary>
+    /// Removes the specified node from the list.
+    /// </summary>
+    /// <param name="node">The node to remove.</param>
+    /// <returns>The data contained in the removed node.</returns>
     private T Remove(Node<T> node)
     {
         // if the node to remove is somewhere either at the
@@ -159,6 +225,12 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         return data;
     }
 
+    /// <summary>
+    /// Removes and returns the element at the specified index.
+    /// </summary>
+    /// <param name="index">The zero-based index of the element to remove.</param>
+    /// <returns>The element at the specified index.</returns>
+    /// <exception cref="System.IndexOutOfRangeException">Thrown when the index is out of range.</exception>
     public T RemoveAt(int index)
     {
         // Make sure the index provided is valid -_-
@@ -187,6 +259,11 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         return Remove(traverse);
     }
 
+    /// <summary>
+    /// Removes the first occurrence of a specific object from the list.
+    /// </summary>
+    /// <param name="item">The object to remove from the list.</param>
+    /// <returns>true if <paramref name="item"/> was successfully removed; otherwise, false.</returns>
     public bool Remove(T item)
     {
         // Support searching for null
@@ -213,6 +290,11 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         return false;
     }
 
+    /// <summary>
+    /// Returns the zero-based index of the first occurrence of a value in the list.
+    /// </summary>
+    /// <param name="item">The object to locate in the list.</param>
+    /// <returns>The zero-based index of the first occurrence of <paramref name="item"/>, if found; otherwise, -1.</returns>
     public int IndexOf(T item)
     {
         var index = 0;
@@ -243,10 +325,25 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         return -1;
     }
 
+    /// <summary>
+    /// Determines whether an element is in the list.
+    /// </summary>
+    /// <param name="item">The object to locate in the list.</param>
+    /// <returns>true if <paramref name="item"/> is found in the list; otherwise, false.</returns>
     public bool Contains(T item) => IndexOf(item) > -1;
 
+    /// <summary>
+    /// Represents a node in the doubly linked list.
+    /// </summary>
+    /// <typeparam name="TNode">The type of data stored in the node.</typeparam>
     private class Node<TNode>
     {
+        /// <summary>
+        /// Initializes a new instance of the Node class.
+        /// </summary>
+        /// <param name="data">The data to store in the node.</param>
+        /// <param name="previous">Reference to the previous node.</param>
+        /// <param name="next">Reference to the next node.</param>
         public Node(TNode data, Node<TNode>? previous, Node<TNode>? next)
         {
             Data = data;
@@ -254,8 +351,19 @@ public class DoublyLinkedList<T> : IEnumerable<T>
             Next = next;
         }
 
+        /// <summary>
+        /// Gets or sets the data stored in this node.
+        /// </summary>
         public TNode Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the previous node in the list.
+        /// </summary>
         public Node<TNode>? Previous { get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the next node in the list.
+        /// </summary>
         public Node<TNode>? Next { get; set; }
     }
 }
