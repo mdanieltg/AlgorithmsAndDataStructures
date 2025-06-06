@@ -138,7 +138,7 @@ public class DoublyLinkedList<T> : IEnumerable<T>
     private T Remove(Node<T> node)
     {
         // if the node to remove is somewhere either at the
-        // head or the tail handle those independently
+        // head or the tail, handle those independently
         if (node.Previous is null) return RemoveFirst();
         if (node.Next is null) return RemoveLast();
 
@@ -146,7 +146,7 @@ public class DoublyLinkedList<T> : IEnumerable<T>
         node.Next.Previous = node.Previous;
         node.Previous.Next = node.Next;
 
-        // Temporary store the data we want to return
+        // Temporarily store the data we want to return
         T data = node.Data;
 
         // Memory cleanup
